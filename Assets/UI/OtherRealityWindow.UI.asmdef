@@ -1,0 +1,19 @@
+{
+    "name": "OtherRealityWindow.UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0590284b973ce174c87460c6cad4aa3f",
+        "GUID:2f6bf08fe3483884d9c6f896e56ca956",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:feffa0a89a0324527b2df83253e9afb6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

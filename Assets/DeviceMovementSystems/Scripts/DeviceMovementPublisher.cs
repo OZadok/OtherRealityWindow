@@ -1,3 +1,4 @@
+using System;
 using Events;
 using SuperMaxim.Messaging;
 using UnityEngine;
@@ -18,6 +19,16 @@ namespace DeviceMovementSystems.Scripts
 		{
 			_devicePositionChangedEvent = new DevicePositionChangedEvent();
 			_deviceOrientationChangedEvent = new DeviceOrientationChangedEvent();
+		}
+
+		private void OnEnable()
+		{
+			Messenger.Default.Subscribe<NewDeviceMovementSystemSelectedEvent>(OnNewDeviceMovementSystemSelected);
+		}
+
+		private void OnDisable()
+		{
+			Messenger.Default.Unsubscribe<NewDeviceMovementSystemSelectedEvent>(OnNewDeviceMovementSystemSelected);
 		}
 
 		private void Update()
@@ -42,11 +53,18 @@ namespace DeviceMovementSystems.Scripts
 
 		private void OrientationChangeCheck()
 		{
-			var newOrientation = _deviceMovementSystem.SetOrientation();
+			var newOrientation = _deviceMovementSystem.GetOrientation();
 			if (newOrientation.Equals(_orientation)) return;
 			_orientation = newOrientation;
 			_deviceOrientationChangedEvent.Orientation = _orientation;
 			Messenger.Default.Publish(_deviceOrientationChangedEvent);
+		}
+		
+		private void OnNewDeviceMovementSystemSelected(NewDeviceMovementSystemSelectedEvent newDeviceMovementSystemSelectedEvent)
+		{
+			_deviceMovementSystem?.End();
+			_deviceMovementSystem = newDeviceMovementSystemSelectedEvent.DeviceMovementSystem;
+			_deviceMovementSystem.Start();
 		}
 	}
 }
