@@ -1,0 +1,16 @@
+{
+    "name": "OtherRealityWindow.Device",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0590284b973ce174c87460c6cad4aa3f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
