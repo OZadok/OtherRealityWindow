@@ -1,3 +1,4 @@
+using System;
 using Device.Scripts;
 using UnityEngine;
 
@@ -33,6 +34,11 @@ namespace Camera
 			}
 		}
 
+		private void OnDisable()
+		{
+			_camera?.ResetProjectionMatrix();
+		}
+
 		private void LateUpdate()
 		{
 			if (_deviceData == null) return;
@@ -45,8 +51,8 @@ namespace Camera
 		private void SetFrustum()
 		{
 			var deviceOrientation = _deviceTransform.rotation;
-			var oppositeDeviceOrientation = deviceOrientation * Quaternion.Euler(Vector3.up * 180);
-			_cameraTransform.rotation = oppositeDeviceOrientation;
+			// var oppositeDeviceOrientation = deviceOrientation * Quaternion.Euler(Vector3.up * 180);
+			_cameraTransform.rotation = deviceOrientation;//oppositeDeviceOrientation;
 
 			var worldToLocalMatrix = _cameraTransform.worldToLocalMatrix;
 			var devicePosition = worldToLocalMatrix.MultiplyPoint(_deviceTransform.position);
@@ -64,6 +70,14 @@ namespace Camera
 			var closestPointOnPlane = devicePlane.ClosestPointOnPlane(Vector3.zero);
 			var near = closestPointOnPlane.magnitude;
 			var far = _camera.farClipPlane;
+			
+			// move near to 0.01 (1 cm from eye)
+			float scaleFactor = _camera.nearClipPlane / near;
+			near *= scaleFactor;
+			left *= scaleFactor;
+			right *= scaleFactor;
+			top *= scaleFactor;
+			bottom *= scaleFactor;
 
 			_camera.projectionMatrix = PerspectiveOffCenter(left, right, bottom, top, near, far);
 		}

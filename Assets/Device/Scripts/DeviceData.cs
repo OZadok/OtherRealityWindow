@@ -13,6 +13,7 @@ namespace Device.Scripts
 		[field: SerializeField]
 		public Vector3 CameraOffSetPosition { get; private set; }
 
+		[field: SerializeField]
 		public Quaternion CameraOffsetOrientation { get; private set; }
 
 		public void SetScreenDimension(Vector2 screenSize)
