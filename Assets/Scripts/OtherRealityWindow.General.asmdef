@@ -2,7 +2,8 @@
     "name": "OtherRealityWindow.General",
     "rootNamespace": "",
     "references": [
-        "GUID:0590284b973ce174c87460c6cad4aa3f"
+        "GUID:0590284b973ce174c87460c6cad4aa3f",
+        "GUID:03be83d4a96ff9e43885292b765359af"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
