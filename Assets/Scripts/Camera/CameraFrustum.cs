@@ -8,7 +8,7 @@ namespace Camera
 	{
 		[SerializeField] private Transform _cameraTransform;
 		[SerializeField] private UnityEngine.Camera _camera;
-		[SerializeField] private Transform _deviceTransform;
+		[SerializeField] private Transform _deviceTransform; // todo - change to take data from message system
 		[SerializeField] private DeviceData _deviceData;
 
 		private void Awake()

@@ -11,8 +11,9 @@ namespace Device.Scripts
 
 		[field: Tooltip("The camera position from the center of the screen")]
 		[field: SerializeField]
-		public Vector3 CameraPosition { get; private set; }
-		public Quaternion CameraOrientation { get; private set; }
+		public Vector3 CameraOffSetPosition { get; private set; }
+
+		public Quaternion CameraOffsetOrientation { get; private set; }
 
 		public void SetScreenDimension(Vector2 screenSize)
 		{
@@ -31,14 +32,14 @@ namespace Device.Scripts
 			SetScreenDimension(new Vector2(width, height));
 		}
 
-		public void SetCameraPosition(Vector3 position)
+		public void SetCameraOffsetPosition(Vector3 position)
 		{
-			CameraPosition = position;
+			CameraOffSetPosition = position;
 		}
-		
-		public void SetCameraOrientation(Quaternion orientation)
+
+		public void SetCameraOffsetOrientation(Quaternion orientation)
 		{
-			CameraOrientation = orientation;
+			CameraOffsetOrientation = orientation;
 		}
 	}
 }
